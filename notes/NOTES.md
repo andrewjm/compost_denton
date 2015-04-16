@@ -195,7 +195,7 @@ Or... why not just use Heroku for free? This [stackoverflow thread](http://stack
 Add the heroku addon to ping the app every 2 minutes:
 
     $ heroku addons:add newrelic
-    $ heroku add ons:docs newrelic
+    $ heroku addons:docs newrelic
 
 Need to get the domain transferred to me, and also need to setup [Custom Domains on Heroku](https://devcenter.heroku.com/articles/custom-domains).
 
@@ -204,12 +204,29 @@ Need to get the domain transferred to me, and also need to setup [Custom Domains
 * A single 1x heroku dyno
 * Newrelic add on for performance monitoring and sleep prevention
 
+## Setting up Production Server
+
 ```
 $ heroku version		#check if installed
 $ heroku login
 $ heroku keys:add		#add SSH key if needed
 $ heroku create			#create space on servers for the app
+```
+
+From the Sample App:
+
+* copy Gemfile
+* copy Procfile
+* copy config/puma.rb
+
+```
+$ git add -A
+$ git commit -am 'setting up prod server'
 $ git push heroku master
 $ heroku open
 ```
 
+Add Newrelic monitoring:
+
+    $ heroku addons:add newrelic
+    $ heroku config:set NEW_RELIC_LICENSE_KEY=<key_here>

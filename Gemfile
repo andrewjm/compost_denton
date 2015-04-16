@@ -31,4 +31,5 @@ group :production do
   gem 'pg',             '0.17.1'		# PostgreSQL interface
   gem 'rails_12factor', '0.0.2'
   gem 'puma',           '2.11.1'		# Puma Webserver
+  gem 'newrelic_rmp'				# Newrelic monitoring
 end

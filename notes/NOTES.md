@@ -228,5 +228,23 @@ $ heroku open
 
 Add Newrelic monitoring:
 
-    $ heroku addons:add newrelic
-    $ heroku config:set NEW_RELIC_LICENSE_KEY=<key_here>
+```
+$ heroku addons:add newrelic
+$ heroku config:set NEW_RELIC_LICENSE_KEY=<key_here>
+$ heroku logs
+```
+
+Once the newrelic agent is talking with the newrelic server, you have to go into the newrelic gui (through the heroku dashboard) and add the proper URL to have the agent ping.
+
+##  Making some Static Page controllers
+
+Generate some controllers
+
+    $ rails g controller StaticPages Home About Faq Partners Pricing Contact
+
+I've brought in views from Sample_App, and the homepage view and css from Compost_Denton. I need to look into pulling in the header and footer views from Compost_Denton as well, and other necessary css.
+
+To make bootstrap javascript available, need to add this bit to app/assets/javascripts/application.js
+
+    //= require bootstrap
+

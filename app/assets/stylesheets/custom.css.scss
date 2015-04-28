@@ -1,0 +1,251 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+    padding: 5px;
+    font: 14px Helvetica, Arial, sans-serif;
+}
+a {
+    color: #00b7ff;
+}
+
+/**        ***
+*** HEADER ***
+***        **/
+
+header {
+  background-color: white;
+  border: none;
+}
+
+.navbar {
+  margin-bottom: 0;
+  border: none!important; /* override bootstrap style */
+}
+.navbar-default {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.navbar-toggle {
+    border-color: #dddddd;
+    margin-top: 20px;
+}
+
+.navbar-toggle:hover,
+.navbar-toggle:focus {
+    background-color: #dddddd;
+}
+
+.navbar-toggle .icon-bar {
+    background-color: #cccccc;
+}
+
+a.navbar-brand  {
+    font-size: 20px;
+    color: #000000;
+    margin: 20px 0 0 0;
+    padding: 10px;
+}
+
+.nav.navbar-nav.pull-right {
+    float:right!important;
+}
+
+.nav > li > a > button.btn.btn-link {
+    color: #000000;
+}
+.nav > li > a:hover {
+    background-color: transparent;
+}
+
+.header-rule {
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+/**      ***
+*** BODY ***
+***      **/
+
+.content {
+  padding-top: 80px;
+}
+
+.feature {
+    margin-top: 50px;
+    margin-bottom: 0x;
+}
+
+.main-feature h2 {
+    font-size:48px;
+}
+
+.main-feature h3 {
+    font-size:28px;
+    color: #4F6F2D;
+}
+
+.flex-video {
+  position: relative;
+  margin-top:25px;
+  padding-top: 25px;
+  padding-bottom: 67.5%;
+  height: 0;
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+.flex-video.widescreen { padding-bottom: 57.25%; }
+.flex-video.vimeo { padding-top: 0; }
+
+.flex-video iframe,
+.flex-video object,
+.flex-video embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.icon {
+    margin-top: 50px;
+}
+
+.feature.topsoil {
+    background: url('/img/topsoil.png');
+    backgrond-attachment: fixed;
+    padding: 33px 22px 34px 22px;
+    color: white;
+}
+
+.feature.topsoil h2 {
+    font-size: 36px;
+    margin-bottom: 5px;
+}
+
+.feature.topsoil h3 {
+    color: #bbb;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.feature.education h2 {
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+.feature.education h4 {
+    font-size: 22px;
+    color: #4F6F2D;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+.feature.education ul li {
+    font-size: 16px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.feature.education img {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.well-rule {
+    border-top: 1px solid #C4C4C4;
+}
+
+.well > ul > li {
+    padding-top: 5px;
+}
+@media(min-width: 1024px) {
+    body {
+        padding: 25px;
+    }
+    a.navbar-brand {
+        font-size: 32px;
+        color :#000000;
+    }
+    .nav > li > a > button.btn {
+        margin-top: 10px;
+    }
+
+    .feature {
+        margin-top: 25px;
+        margin-bottom: 50px;
+    }
+
+    .main-feature h2 {
+        font-size: 72px;
+        margin-bottom: 5px;
+    }
+
+    .main-feature h3 {
+        margin-top: 5px;
+        font-size: 56px;
+    }
+
+    .flex-video {
+        padding-top: 0;
+        margin-top: 0;
+     }
+
+    .feature.education h2 {
+        font-size: 72px;
+        margin-bottom: 5px;
+    }
+
+    .feature.education h4 {
+        font-size: 52px;
+        margin-top: 10px;
+        margin-bottom: 0;
+    }
+}
+@media (max-width: 800px) {
+    .pull-right {
+        float: none!important;
+    }
+
+    .nav.navbar-nav.pull-right {
+    float: none!important;
+}
+}
+@media (min-width: 600px) {
+
+    .feature.education h2 {
+        font-size: 64px;
+        margin-bottom: 5px;
+    }
+
+    .feature.education h4 {
+        font-size: 42px;
+        margin-top: 10px;
+        margin-bottom: 0;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 600px) {
+    .btn-mobile .btn {
+        display: block;
+        width: 100%;
+        padding: 10px 0 10px 0;
+        margin-bottom: 10px;
+    }
+}
+
+@media (min-width: 320px) {
+    .partners .partner-node {
+        padding-top: 10px;
+    }
+    .partners .partner-node img {
+        max-height: 150px;
+    }
+    .about img {
+        max-height: 220px;
+        max-width: 220px;
+        margin: 0 auto;
+    }
+}

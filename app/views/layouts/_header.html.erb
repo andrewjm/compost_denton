@@ -1,0 +1,24 @@
+<header class="navbar navbar-fixed-top navbar">
+  <div class="container">
+    <%= link_to "sample app", root_path, id: "logo" %>
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle Navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "About", about_path %></li>
+        <li><%= link_to "Contact", contact_path %></li>
+        <li><%= link_to "FAQ", faq_path %></li>
+        <li><%= link_to "Partners", partners_path %></li>
+        <li><%= link_to "Pricing", pricing_path %></li>
+      </ul>
+    </nav>
+  </div>
+  <hr class="header-rule">
+</header>

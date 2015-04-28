@@ -1,4 +1,23 @@
 Rails.application.routes.draw do
+
+  get 'static_pages/Contact'
+
+  # Lots of Info here: http://guides.rubyonrails.org/routing.html
+
+  root				'static_pages#Home'
+
+  # This syntax yields two named routes, ie. about_url (an
+  # absolute path) and about_path (a relative path)
+
+  get 'about'		=>	'static_pages#About'
+  get 'faq'		=>	'static_pages#Faq'
+  get 'partners'	=>	'static_pages#Partners'
+  get 'pricing'		=>	'static_pages#Pricing'
+  get 'contact'		=>	'static_pages#Contact'
+  get 'terms'		=>	'static_pages#Terms'
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

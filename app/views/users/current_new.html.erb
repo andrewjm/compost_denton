@@ -1,0 +1,147 @@
+    <script src="https://checkout.stripe.com/checkout.js"></script>
+
+    <div class="page-header">
+        <h2>Sign up<h2>
+    </div>
+    <div class="form-group well">
+	<p><strong>14 day Free Trial</strong></p>
+	<p>Currently serving zip codes 76201, 76205, 76207, 76208, 76209, 76210</p>
+    </div>
+
+    <!-- Flash Messages -->
+    <div class="fade in alert alert-danger">
+        <button class="close" data-dismiss="alert">&times;</buttton>
+            <div class="strong">
+            </div>
+    </div>
+
+    <!-- Form Errors -->
+    <div id="alerts">
+        <div id="emailAlert" class="alert alert-danger" role="alert" style="display: none;">
+            <strong>Warning: </strong>A valid e-mail address is required!
+        </div>
+
+        <div id="passwordEmptyAlert" class="alert alert-danger" role="alert" style="display: none;">
+            <strong>Warning: </strong>Please enter a password
+        </div>
+
+        <div id="passwordAlert" class="alert alert-danger" role="alert" style="display: none;">
+            <strong>Warning: </strong>Passwords don't match!
+        </div>
+
+        <div id="firstNameAlert" class="alert alert-danger" role="alert" style="display: none;">
+            <strong>Warning: </strong>A First Name is required!
+        </div>
+
+        <div id="lastNameAlert" class="alert alert-danger" role="alert" style="display: none;">
+            <strong>Warning: </strong>A Last Name is required!
+        </div>
+
+        <div id="addressLineOneAlert" class="alert alert-danger" role="alert" style="display: none;">
+            <strong>Warning: </strong>An address is required!
+        </div>
+
+        <div id="zipCodeAlert" class="alert alert-info" role="alert" style="display: none;">
+            <strong>Warning: </strong>Your Zip Code is not in our service area. We currently service 76201, 76205, 76297, 76208, 76209, 76210. You may consider signing up with our <a href="/newsletter">newsletter</a> to recieve updates about future expansion.
+        </div>
+
+        <div id="termsAlert" class="alert alert-danger" role="alert" style="display: none;">
+            <strong>Warning: </strong>Please read Terms of Service and check the box.
+        </div>
+
+        <div id="genericAlert" class="alert alert-danger" role="alert" style="display: none;">
+            <strong>Warning: </strong>Unable to create account :(
+        </div>
+    </div>
+
+    <!-- BEGIN FORM / BEGIN FORM / BEGIN FORM
+    <form id="create-account-form" name="createAccount" action="/users">
+        <div class="form-group">
+            <label for="email">E-Mail Address</label>
+            <input name="email" id="email" class="form-control" type="email" placeholder="(Required)" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input name="password" id="password" class="form-control" type="password", placeholder="(Required)" required>
+        </div>
+        <div class="form-group">
+            <label for="confirm-password">Confirm Password</label>
+            <input name="confirm-password" id="confirmPassword" class="form-control" type="password", placeholder="(Required)" required>
+        </div>
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input name="firstName" id="firstName" class="form-control" type="text" placeholder="(Required)" required />
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input name="lastName" id="lastName" class="form-control" type="text" placeholder="(Required)" required />
+        </div>
+        <div class="form-group">
+            <label for="addressLineOne">Address Line One</label>
+            <input name="addressLineOne" id="addressLineOne" class="form-control" type="text" placeholder="(Required)" required />
+        </div>
+        <div class="form-group">
+            <label for="addressLineTwo">Address Line Two</label>
+            <input name="addressLineTwo" id="addressLineTwo" class="form-control" type="text" placeholder="" required />
+        </div>
+        <div class="form-group">
+            <label for="zipCode">Zip Code</label>
+            <input name="zipCode" id="zipCode" class="form-control" type="number" placeholder="(Required)" ng-minlength="5" required />
+        </div>
+        <div class="form-group">
+            <label for="numberResidents">Number of Residents</label>
+            <select name="numberResidents" id="numberResidents" class="form-control"required>
+                <option value='1' selected>1</option>
+                <option value='2'>2</option>
+                <option value='3'>3</option>
+                <option value='4'>4</option>
+                <option value='5'>5</option>
+                <option value='6'>6</option>
+		<option value='7'>7+</option>
+            </select>
+        </div>
+	<div class="form-group well">
+	    <label for="terms_of_service">Terms of Service Agreement</label><br>
+	    <input type="checkbox" name="terms_of_service" id="terms_of_service" value="true"> I have read and agree to the <a target="_blank" href="/#!/terms">Terms of Service</a>, including a 3 month minimum membership.
+	</div>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="btn-mobile">
+                        <button id="stripeButton" class="btn btn-md btn-success" type="button" data-loading-text="<i class='fa fa-refresh fa-spin'></i> Getting payment..." data-complete-text="<i class='fa fa-check'></i> Success!">
+                            <i class="fa fa-usd"></i>
+                            Become a Member! 
+                        </button>
+                    </div>
+                </div>
+                <div class='col-md-6'>
+                    <div class="btn-mobile">
+                        <button id="signupSubmit" class="pull-right btn btn-md btn-primary" type="submit" style="display: none;">
+                            <span>Submit</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    END FORM / END FORM / END FORM -->
+
+    <!--<div class="row col-md-13">
+        <div class="well">
+            <strong>Pricing Info:</strong>
+            <br />
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+            <strong>Testing Info:</strong>
+            <br />
+            <p>
+                <b>Card: </b>4242 4242 4242 4242
+                <br />
+                <b>CVC: </b>123
+                <br />
+                <b>Expiration: </b>Any date not already passed.
+            </p>
+        </div>
+    </div>-->

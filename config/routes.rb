@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'static_pages/Contact'
-
   # Lots of Info here: http://guides.rubyonrails.org/routing.html
 
   root				'static_pages#Home'
@@ -15,7 +13,7 @@ Rails.application.routes.draw do
   get 'pricing'		=>	'static_pages#Pricing'
   get 'contact'		=>	'static_pages#Contact'
   get 'terms'		=>	'static_pages#Terms'
-
+  get 'signup'		=>	'users#new'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

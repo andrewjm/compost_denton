@@ -248,3 +248,37 @@ To make bootstrap javascript available, need to add this bit to app/assets/javas
 
     //= require bootstrap
 
+## User Management
+
+### User Signup UI
+
+Generate Users controller with page and method 'new'
+
+    rails g controller Users new
+
+update config/routes.rb
+update the view at app/views/users/new.html.erb
+
+### Modeling Users
+
+Generate a model and migrate the database
+
+```
+rails g model User name:string email:string:uniq password_digest:string
+bundle exec rake db:migrate
+```
+
+add tests at test/models/user_test.rb
+add validations at app/models/user.rb
+empty users fixture at test/fixtures/users.yml
+
+run test
+
+    bundle exec rake test
+
+###
+
+add a signup page with form
+add a signup method in users controller
+
+http://www.zenspider.com/Languages/Ruby/QuickRef.html#4 Really good quick reference

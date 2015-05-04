@@ -270,12 +270,31 @@ To make bootstrap javascript available, need to add this bit to app/assets/javas
 
 ## User Management
 
+<<<<<<< HEAD
+=======
+### User Signup UI
+
+Generate Users controller with page and method 'new'
+
+    rails g controller Users new
+
+update config/routes.rb
+update the view at app/views/users/new.html.erb
+
+>>>>>>> 91e52ae88291cfcdebaf65475d5ddb0df30283f0
 ### Modeling Users
 
 Generate a model and migrate the database
 
+<<<<<<< HEAD
     $ rails g model User name:string email:string:uniq password_digest:string
     $ bundle exec rake db:migrate
+=======
+```
+rails g model User name:string email:string:uniq password_digest:string
+bundle exec rake db:migrate
+```
+>>>>>>> 91e52ae88291cfcdebaf65475d5ddb0df30283f0
 
 add tests at test/models/user_test.rb
 add validations at app/models/user.rb
@@ -283,6 +302,7 @@ empty users fixture at test/fixtures/users.yml
 
 run test
 
+<<<<<<< HEAD
     $ bundle exec rake test
 
 ### Display Users
@@ -319,6 +339,8 @@ update config/routes.rb
 update the view at app/views/users/new.html.erb
 update method new at app/controllers/users_controller.rb
 
+    bundle exec rake test
+
 add a signup page with form
 add a signup method in users controller
 
@@ -333,4 +355,3 @@ SSL on production, uncomment this line in config/environments/production.rb
 Heroku will automatically allow the app to piggyback on it's own SSL cert
 as long as SSL is enabled on the app. To setup SSL on Heroku with a custom
 domain, refer to this [article on ssl-endpoints](https://devcenter.heroku.com/articles/ssl-endpoint).
-

@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   get 'terms'		=>	'static_pages#Terms'
   get 'signup'		=>	'users#new'
 
+  # Resources, REST methods needed
+
+  resources			:users
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

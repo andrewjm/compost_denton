@@ -1,3 +1,5 @@
+http://www.zenspider.com/Languages/Ruby/QuickRef.html#4 Really good quick reference
+
 # Compost Denton Rails App
 
 The Compost Denton app was originally developed on a MEAN stack (Mongo, ExpressJS, AngularJS, NodeJS) by some wonderful developer friends. These notes are intended to detail the development of an identical app using Rails and Postgres.
@@ -236,6 +238,24 @@ $ heroku logs
 
 Once the newrelic agent is talking with the newrelic server, you have to go into the newrelic gui (through the heroku dashboard) and add the proper URL to have the agent ping.
 
+## The Git workflow
+
+```
+$ git checkout -b new-branch-name
+```
+Do work, make changes, etc.
+
+```
+$ bundle exec rake test
+$ git add -A
+$ git commit -am 'comment here'
+$ git checkout master
+$ git merge new-branch-name
+$ bundle exec rake test
+$ git push origin master
+$ git push heroku master
+```
+
 ##  Making some Static Page controllers
 
 Generate some controllers
@@ -250,23 +270,12 @@ To make bootstrap javascript available, need to add this bit to app/assets/javas
 
 ## User Management
 
-### User Signup UI
-
-Generate Users controller with page and method 'new'
-
-    rails g controller Users new
-
-update config/routes.rb
-update the view at app/views/users/new.html.erb
-
 ### Modeling Users
 
 Generate a model and migrate the database
 
-```
-rails g model User name:string email:string:uniq password_digest:string
-bundle exec rake db:migrate
-```
+    $ rails g model User name:string email:string:uniq password_digest:string
+    $ bundle exec rake db:migrate
 
 add tests at test/models/user_test.rb
 add validations at app/models/user.rb
@@ -274,11 +283,54 @@ empty users fixture at test/fixtures/users.yml
 
 run test
 
-    bundle exec rake test
+    $ bundle exec rake test
 
-###
+### Display Users
+
+Add resources to config/routes.rb for REST
+
+    resources :users
+
+> When following REST principles, resources are typically referenced
+> using the resource name and a unique identifier...we should view the
+> user with id 1 by issuing a GET request to the URL /users/1...the
+> show action is implicit...GET requests are automatically handled by
+> the show action.
+
+Create view for displaying a user profile
+
+    touch app/views/users/show.html.erb
+
+Will need to manually create a user in the DB to move forward
+
+    $ rails c
+    >> User.create(name:'Name Here', email:'email@here.com'
+                   password:'password', password_confirmation:'password')
+
+visit <websitename>.com/users/1 to see display in action
+
+### User Signup
+
+Generate Users controller with page and method 'new'
+
+    $ rails g controller Users new
+
+update config/routes.rb
+update the view at app/views/users/new.html.erb
+update method new at app/controllers/users_controller.rb
 
 add a signup page with form
 add a signup method in users controller
 
-http://www.zenspider.com/Languages/Ruby/QuickRef.html#4 Really good quick reference
+setup an integration test for user signup
+
+    rails g integration_test users_signup
+
+SSL on production, uncomment this line in config/environments/production.rb
+
+    config.force_ssl = true
+
+Heroku will automatically allow the app to piggyback on it's own SSL cert
+as long as SSL is enabled on the app. To setup SSL on Heroku with a custom
+domain, refer to this [article on ssl-endpoints](https://devcenter.heroku.com/articles/ssl-endpoint).
+

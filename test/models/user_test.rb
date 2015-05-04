@@ -18,11 +18,6 @@ class UserTest < ActiveSupport::TestCase
 				email: 			"user@example.com",
 				password:	 	"foobar",
 				password_confirmation: 	"foobar" )
-
-    @other_user = User.new(	name:                   "Other User",
-                        	email:                  "other@example.com",
-                        	password:       	 "foobar",
-                        	password_confirmation:  "foobar" )
   end
 
   # Confirm the @user object is valid
@@ -79,12 +74,6 @@ class UserTest < ActiveSupport::TestCase
       assert_not @user.valid?, "#{invalid_address.inspect} should be invalid"
     end
   end
-
-  # Set email to non unique value and confirm invalid
-#  test "email should be unique" do
-#    @user.email = "other@example.com"
-#    assert_not @user.valid?
-#  end
 
   # Duplicate user and confirm unnique is invalid
   test "email should be unique" do

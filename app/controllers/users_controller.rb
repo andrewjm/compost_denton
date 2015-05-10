@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)	# fill @user attributes with hash from form
     if @user.save			# attempt to save @user into db
+      log_in @user
       flash[:success] = "Welcome to Compost Denton"
       redirect_to @user
     else				# if fails, reload the signup page

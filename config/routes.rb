@@ -15,6 +15,12 @@ Rails.application.routes.draw do
   get 'terms'		=>	'static_pages#Terms'
   get 'signup'		=>	'users#new'
 
+  # Sessions Routing
+
+  get		'login'		=>	'sessions#new'
+  post		'login'		=>	'sessions#create'
+  delete	'logout'	=>	'sessions#destroy'
+
   # Resources, REST methods needed
 
   resources			:users

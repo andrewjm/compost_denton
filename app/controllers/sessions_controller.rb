@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate( params[:session][:password] )			# if user exists and has proper email pw combo
       log_in user								# create the session (function lives in session_helper.rb)
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)	# if remember is checked, create permanent cookie
-      redirect_to user
+      redirect_back_or user
     else
       flash.now[:danger] = "Invalid email / password combination"
       render 'new'

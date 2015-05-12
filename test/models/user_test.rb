@@ -86,12 +86,6 @@ class UserTest < ActiveSupport::TestCase
   ##
   ## PASSWORD
 
-  # Set password to blank and confirm invalid
-  test "password should not be empty" do
-    @user.password = "   "
-    assert_not @user.valid?
-  end
-
   # Set password too short and confirm invalid
   test "password should be six characters or more" do
     @user.password = "abc"

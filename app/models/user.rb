@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
   has_secure_password
 
   # Password is no less than 6 characters
-  validates :password, length: { minimum: 6 }
+  validates :password, length: { minimum: 6 }, allow_blank: true
 
 
   ####

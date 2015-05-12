@@ -255,6 +255,11 @@ $ bundle exec rake test
 $ git push origin master
 $ git push heroku master
 ```
+Run any necessary commands on Heroku
+
+```
+$ heroku run rake db:migrate
+```
 
 ##  Making some Static Page controllers
 
@@ -374,8 +379,8 @@ The above routes serve the following functions respectively:
 * Destroy a session upon logout
 
 Update view at app/views/sessions/new.html.erb
-Update controller at app/controllers/sessions_controller.r
-Update app/helpers/sessions_helper.rb
+Update controller at app/controllers/sessions\_controller.r
+Update app/helpers/sessions\_helper.rb
 Update app/models/user.rb
 
 Make an integration test for logins
@@ -384,9 +389,45 @@ Make an integration test for logins
 
 Update:
 * test/fixtures/users.yml
-* test/integration_users_login_test.rb
-* test/integration_users_signup_test.rb
-* test/helpers/sessions_helper.rb
-* test/test_helpber.rb
-* app/views/layouts/_header.html.erb (to change items when logged in)
+* test/integration\_users\_login\_test.rb
+* test/integration\_users\_signup\_test.rb
+* test/helpers/sessions\_helper.rb
+* test/test\_helpber.rb
+* app/views/layouts/\_header.html.erb (to change items when logged in)
+* app/controllers/application\_controller.rb
 
+### Updating, Showing, and Deleting Users
+
+Update:
+* app/controllers/users\_controller.rb
+* app/controllers/sessions\_controller.rb
+
+* app/helpers/session\_helper.rb
+
+* app/models.uer.rb
+
+* test/controllers/users\_controller\_test.rb
+* test/fixtures/users.yml
+* test/integration/users\_edit\_test.rb
+* test/integration/users\_index\_test.rb
+
+* app/views/user/edit.html.erb
+* app/views/user/index.html.erb
+* app/views/user/\_user.html.erb
+
+* db/seeds.rb
+
+Add admin column to users table
+
+    rails g migration add\_admin\_to\_users admin:boolean
+
+Default value modifiers are not supported by rails generate migration, so update the migration file to
+
+    add_column :users, :admin, :boolean, default: false
+
+Create and update integration test
+
+    rails g integration_test users_edit
+    rails g integration_test users_index
+
+Pretty sure I am ready to Git Up and move on to chapter 10, do one more scan of ch 9 to be sure

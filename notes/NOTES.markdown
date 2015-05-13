@@ -324,7 +324,7 @@ Add resources to config/routes.rb for REST
 
 Create view for displaying a user profile
 
-    touch app/views/users/show.html.erb
+    $ touch app/views/users/show.html.erb
 
 Will need to manually create a user in the DB to move forward
 
@@ -344,14 +344,14 @@ update config/routes.rb
 update the view at app/views/users/new.html.erb
 update method new at app/controllers/users_controller.rb
 
-    bundle exec rake test
+    $ bundle exec rake test
 
 add a signup page with form
 add a signup method in users controller
 
 setup an integration test for user signup
 
-    rails g integration_test users_signup
+    $ rails g integration_test users_signup
 
 SSL on production, uncomment this line in config/environments/production.rb
 
@@ -363,8 +363,8 @@ domain, refer to this [article on ssl-endpoints](https://devcenter.heroku.com/ar
 
 ### Log in, Log out
 
-    git checkout -b login-logout
-    rails g controller Sessions new
+    $ git checkout -b login-logout
+    $ rails g controller Sessions new
 
 Update config/routes.rb
 
@@ -385,7 +385,7 @@ Update app/models/user.rb
 
 Make an integration test for logins
 
-    rails g integration_test users_login
+    $ rails g integration_test users_login
 
 Update:
 * test/fixtures/users.yml
@@ -419,7 +419,7 @@ Update:
 
 Add admin column to users table
 
-    rails g migration add\_admin\_to\_users admin:boolean
+    $ rails g migration add\_admin\_to\_users admin:boolean
 
 Default value modifiers are not supported by rails generate migration, so update the migration file to
 
@@ -427,7 +427,89 @@ Default value modifiers are not supported by rails generate migration, so update
 
 Create and update integration test
 
-    rails g integration_test users_edit
-    rails g integration_test users_index
+    $ rails g integration_test users_edit
+    $ rails g integration_test users_index
 
-Pretty sure I am ready to Git Up and move on to chapter 10, do one more scan of ch 9 to be sure
+### Account Activation & Password Reset
+
+A Note of variables:
+* User instance variables if they need to be passed to a view
+* Variables should have the narrowest scope possible
+
+*Update*:
+* config/environments/production.rb (fill out SMTP settings)
+* config/routes.rb
+* app/models/user.rb
+* app/controllers/users\_controller.rb
+* db/seeds.rb
+* test/fixtures/users.yml
+* config/environments/development.rb
+* config/environments/test.rb
+* test/models/user\_test.rb
+* test/integration/users\_signup\_test.rb
+
+*NOTE*: A controller generation yields the following:
+* controller
+* views directory
+* controller test
+* helper
+* coffeescript file
+* scss file
+
+#### Account Activation
+
+##### Psuedocode
+
+1. Start users in an “unactivated” state.
+2. When a user signs up, generate an activation token and corresponding activation digest.
+3. Save the activation digest to the database, and then send an email to the user with a
+   link containing the activation token and user’s email address.
+4. When the user clicks the link, find the user by email address, and then authenticate
+   the token by comparing with the activation digest.
+5. If the user is authenticated, change the status from “unactivated” to “activated”.
+
+##### Devel
+
+    $ rails g controller AccountActivations
+    $ rails g migration add_activation_to_users activation_digest:string activated:boolean activated_at:datetime
+
+Edit migration file to make 'activated' default value false.
+
+    $ bundle exec rake db:migrate
+    $ rails g mailer UserMailer account_activation password_reset
+
+*Note*: 'rails g mailer UserMailer account\_activation\ password\_reset' generates:
+* app/mailers/user\_mailer.rb
+* app/mailers/application\_mailer.rb
+* app/views/user\_mailer
+* app/views/layouts/mailer.text.erb
+* app/views/layouts/mailer.html.erb
+* app/views/user\_mailer/account\_activation.text.erb
+* app/views/user\_mailer/account\_activation.html.erb
+* app/views/user\_mailer/password\_reset.text.erb
+* app/views/user\_mailer/password\_reset.html.erb
+* test/mailers/user\_mailer\_test.rb
+* test/mailers/previews/user\_mailer\_preview.rb
+
+Mailers are structured much like controller actions, with email templates defined as views.
+
+#### Password Reset
+
+##### Pseudocode
+
+1. When a user requests a password reset, find the user by the submitted email address.
+2. If the email address exists in the database, generate a reset token and corresponding
+   reset digest.
+3. Save the reset digest to the database, and then send an email to the user with a link
+   containing the reset token and user’s email address.
+4. When the user clicks the link, find the user by email address, and then authenticate
+   the token by comparing to the reset digest.
+5. If authenticated, present the user with the form for changing the password.
+
+##### Devel
+
+    $ rails g controller PasswordResets new edit --no-test-framework
+    $ rails g migrate add_reset_to_users reset_digest:string reset_sent_at:datetime
+    $ bundle exec rake db:migrate
+    $ rails g integration_test password_resets
+    $ heroku addons:add sendgrid:starter

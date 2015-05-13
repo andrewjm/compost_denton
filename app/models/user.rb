@@ -1,13 +1,11 @@
 class User < ActiveRecord::Base
+  
+  attr_accessor :remember_token, :activation_token
+  before_save :downcase_email
+  before_create :create_activation_digest
 
   # Email Regex
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-
-  attr_accessor :remember_token
-
-  # Make all email addresses lowercase to ensure consistency in db
-  before_save { self.email = email.downcase }
-
 
   ####
   #### VALIDATIONS
@@ -28,7 +26,6 @@ class User < ActiveRecord::Base
   # Password is no less than 6 characters
   validates :password, length: { minimum: 6 }, allow_blank: true
 
-
   ####
   #### SESSION HANDLING
 
@@ -48,9 +45,10 @@ class User < ActiveRecord::Base
   ## READ TOKENS
 
   # Return true if there is a match of permanent cookie
-  def authenticated?(remember_token)
-    return false if remember_digest.nil?
-    BCrypt::Password.new(remember_digest).is_password?(remember_token)
+  def authenticated?(attribute, token)
+    digest = send("#{attribute}_digest")
+    return false if digest.nil?
+    BCrypt::Password.new(digest).is_password?(token)
   end
 
   ## GENERATE TOKENS 
@@ -65,4 +63,26 @@ class User < ActiveRecord::Base
   def User.new_token
     SecureRandom.urlsafe_base64
   end
+
+  # Activates an account
+  def activate
+    update_attribute(:activated, true)
+    update_attribute(:activated_at, Time.zone.now)
+  end
+
+  # Sends activation email
+  def send_activation_email
+    UserMailer.account_activation(self).deliver_now
+  end
+
+  private
+
+    def downcase_email 
+      self.email = email.downcase 
+    end
+
+    def create_activation_digest
+      self.activation_token  = User.new_token
+      self.activation_digest = User.digest(activation_token)
+    end
 end

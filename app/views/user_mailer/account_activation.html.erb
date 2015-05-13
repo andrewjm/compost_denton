@@ -1,0 +1,8 @@
+<h1>App Name</h1>
+
+<p>Hi <%= @user.name %>!</p>
+
+<p>Click the link below to activate your account:</p>
+
+<% # edit_account_activation_url is a url helper that builds a url with given arguments %>
+<%= link_to "Activate Account", edit_account_activation_url(@user.activation_token, email: @user.email) %>

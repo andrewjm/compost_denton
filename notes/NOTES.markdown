@@ -433,7 +433,7 @@ Create and update integration test
 ### Account Activation & Password Reset
 
 A Note of variables:
-* User instance variables if they need to be passed to a view
+* Use instance variables if they need to be passed to a view
 * Variables should have the narrowest scope possible
 
 *Update*:
@@ -447,6 +447,7 @@ A Note of variables:
 * config/environments/test.rb
 * test/models/user\_test.rb
 * test/integration/users\_signup\_test.rb
+* app/views/sessions/new.html.erb
 
 *NOTE*: A controller generation yields the following:
 * controller
@@ -509,7 +510,9 @@ Mailers are structured much like controller actions, with email templates define
 ##### Devel
 
     $ rails g controller PasswordResets new edit --no-test-framework
-    $ rails g migrate add_reset_to_users reset_digest:string reset_sent_at:datetime
+    $ rails g migration add_reset_to_users reset_digest:string reset_sent_at:datetime
     $ bundle exec rake db:migrate
     $ rails g integration_test password_resets
     $ heroku addons:add sendgrid:starter
+
+Update config/environments/production.rb with SMTP settings, this will require a manual update of 'host' to match heroku app name, unless I can grab the heroku app name via heroku CLI and then use sed to swap it into place in the file.

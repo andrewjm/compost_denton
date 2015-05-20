@@ -1,6 +1,6 @@
-<header class="navbar navbar-fixed-top navbar">
+<header class="navbar navbar-fixed-top">
   <div class="container">
-    <%= link_to "Compost Denton", root_path, id: "logo" %>
+    <%= link_to "Compost Denton", root_path, id: "logo", class: "pull-left" %>
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="sr-only">Toggle Navigation</span>
@@ -11,28 +11,27 @@
     </div>
     <nav class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "About", about_path %></li>
-        <li><%= link_to "Contact", contact_path %></li>
-        <li><%= link_to "FAQ", faq_path %></li>
-        <li><%= link_to "Partners", partners_path %></li>
-        <li><%= link_to "Pricing", pricing_path %></li>
+        <li><%= link_to "Home",           root_path %></li>
+        <li><%= link_to "About",          about_path %></li>
+        <li><%= link_to "Contact",        contact_path %></li>
+        <li><%= link_to "FAQ",            faq_path %></li>
+        <li><%= link_to "Partners",       partners_path %></li>
+        <li><%= link_to "Pricing",        pricing_path %></li>
 	<% if logged_in? %>
-	  <li><%= link_to "Users", users_path %></li>
+	  <li><%= link_to "Users",        users_path %></li>
 	  <li class="dropdown">
 	  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account<b class="caret"></b></a>
 	    <ul class="dropdown-menu">
-	      <li><%= link_to "Profile", current_user %></li>
+	      <li><%= link_to "Profile",  current_user %></li>
 	      <li><%= link_to "Settings", edit_user_path(current_user) %></li>
 	      <li class="divider"></li>
-	      <li><%= link_to "Log out", logout_path, method: "delete"  %></li>
+	      <li><%= link_to "Log out",  logout_path, method: "delete"  %></li>
 	    </ul>
 	  </li>
 	<% else %>
-	  <li><%= link_to "Log in", login_path  %></li>
+	  <li><%= link_to "Log in",       login_path  %></li>
 	<% end %>
       </ul>
     </nav>
   </div>
-  <hr class="header-rule">
 </header>

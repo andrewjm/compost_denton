@@ -516,3 +516,11 @@ Mailers are structured much like controller actions, with email templates define
     $ heroku addons:add sendgrid:starter
 
 Update config/environments/production.rb with SMTP settings, this will require a manual update of 'host' to match heroku app name, unless I can grab the heroku app name via heroku CLI and then use sed to swap it into place in the file.
+
+Git up.
+
+### To Do
+Test production app on heroku, should get email on sign up, pw reset, etc. 
+Clean up CSS to absolute minimal. Clone repo and put all necessary files into make\_rails.sh script
+
+I am currently cleaning up CSS. I could probably work on this for one week, so lets wrap it up next session.

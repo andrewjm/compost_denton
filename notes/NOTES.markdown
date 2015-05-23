@@ -519,8 +519,26 @@ Update config/environments/production.rb with SMTP settings, this will require a
 
 Git up.
 
-### To Do
-Test production app on heroku, should get email on sign up, pw reset, etc. 
-Clean up CSS to absolute minimal. Clone repo and put all necessary files into make\_rails.sh script
+## Custom Featurs
 
-I am currently cleaning up CSS. I could probably work on this for one week, so lets wrap it up next session.
+### Collecting more Sign up data
+
+* Get necessary data on sign up form (other than credit card/stripe things)
+* Geolocate address upon signup
+* Ensure users can edit all necessary data
+* Ensure geolocation updates upon address update
+
+    $ rails g migration add_custom_fields_to_users first_name:string last_name:string address_line_one:string address_line_two:string city:string zip_code:number number_residents:number
+    $ bundle exec db:migrate
+
+### Geolocation
+
+Probably needs a controller (and a model?)
+
+### Stripe
+
+Probably needs a controller (and a model?)
+
+#### Creating account
+
+#### Editing account

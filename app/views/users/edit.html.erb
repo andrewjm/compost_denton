@@ -18,6 +18,27 @@
       <%= f.label :password_confirmation, 'Confirmation' %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
 
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name, class: 'form-control' %>
+
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name, class: 'form-control' %>
+
+      <%= f.label :address_line_one, "Address" %>
+      <%= f.text_field :address_line_one, class: 'form-control' %>
+
+      <%= f.label :address_line_two, "Address (line two)" %>
+      <%= f.text_field :address_line_two, class: 'form-control' %>
+
+      <%= f.label :city %>
+      <%= f.text_field :city, class: 'form-control' %>
+
+      <%= f.label :zip_code, "Zip code" %>
+      <%= f.number_field :zip_code, class: 'form-control' %>
+
+      <%= f.label :number_residents, "Number of residents" %>
+      <%= f.number_field :number_residents, class: 'form-control' %>
+
       <%= f.submit "Save Changes", class: 'btn btn-primary' %>
 
     <% end %>

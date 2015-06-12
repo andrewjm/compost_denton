@@ -49,6 +49,22 @@ header {
   background-color: #cccccc;
 }
 
+// Gmaps Custom Styling
+
+.custom_overlay {
+  background: transparent;
+  position: relative;
+  width: 100%;
+  height: 200px;
+  top: 200px;
+  margin-top: -200px;
+  z-index: 9999;
+}
+
+#gmaps-canvas {
+  height: 200px;
+}
+
 /**
 *** MEDIA QUERIES
 **/

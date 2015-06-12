@@ -521,6 +521,8 @@ Git up.
 
 ## Custom Featurs
 
+NOTE: We have a problem, it costs $50/mo to use PostGIS on Heroku. (source)[https://addons.heroku.com/heroku-postgresql#standard-0]
+
 ### Collecting more Sign up data
 
 * Get necessary data on sign up form (other than credit card/stripe things)
@@ -533,7 +535,45 @@ Git up.
 
 ### Geolocation
 
+Dependencies:
+* RGeo gem
+* PostGRES
+* PostGIS
+* Spatialite (actually I may dev w postgres locally)
+* activerecord-postgis-adapter gem
+* Ruby Geocoder (gmaps-autocomplete-rails gem already geocodes address, but looks like Geocoder offers 'near' queries)
+* Gmaps Autocomplete: https://github.com/kristianmandrup/gmaps-autocomplete-rails
+
+To install postgres gem requires details here: http://postgresapp.com/documentation/configuration-ruby.html you have to use their code on bundle
+
+I have swapped db for psql, migrated db, and cleaned up necessary bits.
+
+See this post for some more details: http://ngauthier.com/2013/08/postgis-and-rails-a-simple-approach.html
+
 Probably needs a controller (and a model?)
+
+*TODO:*
+
+#### Setup PostGIS:
+
+  $ psql
+  > \c database\_name
+  > create extension postgis;
+
+#### Autocomplete Address Field:
+
+Follow the instructions at https://github.com/kristianmandrup/gmaps-autocomplete-rails
+
+#### Geocode address to lat long on form submission:
+
+The gmaps-autocomplete-rails gem geocodes the address into lat/long.
+Setup the activerecord-postgis-adapter gem and its dependencies https://github.com/rgeo/activerecord-postgis-adapter
+Setup fields in db table for latlong:
+  rails g migration add\_lonlat\_to\_users lonlat:st\_point
+  bundle exec rake db:migrate
+
+UPDATE: Geocoder does not require Postgis. Although Postgis looks awesome, it increases cost on Heroku. Geocoder has good documentation,
+        looks easy to use, and keeps costs low. I'm going to go with Geocoder and Postgres over RGeo and Postgis
 
 ### Stripe
 

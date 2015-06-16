@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   
   attr_accessor :remember_token, :activation_token, :reset_token
+  geocoded_by :address_line_one
+  after_validation :geocode
   before_save :downcase_email
   before_create :create_activation_digest
 
@@ -11,7 +13,7 @@ class User < ActiveRecord::Base
   #### VALIDATIONS
 
   # Name exists and is no longer than 50 characters
-  validates :name, presence: true, length: { maximum: 50 }
+  # validates :name, presence: true, length: { maximum: 50 }
 
   # Email exists, 255 chars or less, is unique, valid, and case insensitive
   validates :email, presence: true, length: { maximum: 255 },

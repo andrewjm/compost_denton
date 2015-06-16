@@ -16,8 +16,6 @@ gem 'sdoc',                     '0.4.0', group: :doc
 gem 'pg', 	                '0.17.1'                # PostgreSQL interface
 gem 'jquery-ui-rails'
 gem 'gmaps-autocomplete-rails'
-gem 'activerecord-postgis-adapter'
-gem 'rgeo'
 gem 'geocoder'
 
 group :development, :test do

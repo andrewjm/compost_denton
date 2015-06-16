@@ -77,10 +77,10 @@ class UsersController < ApplicationController
 
     # Setup strong parameters for user hash from signup form
     def user_params
-      params.require(:user).permit( :name,
-				    :email,
+      params.require(:user).permit( :email,
 				    :password,
-				    :password_confirmation )
+				    :password_confirmation,
+				    :address_line_one )
     end
 
     # Check if logged in

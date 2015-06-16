@@ -11,8 +11,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
   test "invalid signup attributes" do
     get signup_path
     assert_no_difference 'User.count' do
-      post users_path, user: { name: "",
-			       email: "hello@example.com",
+      post users_path, user: { email: "",
 			       password: "password123",
 			       password_confirmation: "password123" }
     end
@@ -23,8 +22,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
   test "valid signup attributes with account activation" do
     get signup_path
     assert_difference 'User.count', 1 do
-      post users_path, user: { name: "Example User",
-		  	       email: "test_user@example.com",
+      post users_path, user: { email: "test_user@example.com",
 			       password: "foobar",
 			       password_confirmation: "foobar" }
     end

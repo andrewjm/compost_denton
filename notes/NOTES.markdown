@@ -575,6 +575,8 @@ Setup fields in db table for latlong:
 UPDATE: Geocoder does not require Postgis. Although Postgis looks awesome, it increases cost on Heroku. Geocoder has good documentation,
         looks easy to use, and keeps costs low. I'm going to go with Geocoder and Postgres over RGeo and Postgis
 
+Geocoder is working, however address\_line\_one is not saving in db. Need to investigate.. is now saving, attr\_accessor was getting in the way
+
 ### Stripe
 
 Probably needs a controller (and a model?)

@@ -30,6 +30,7 @@ header {
   margin: 0 !important;
   padding: 20px 0 !important;
   border-bottom: 1px solid $gray-lighter !important;
+  z-index: 9999!important;
 }
 
 #logo {
@@ -49,6 +50,12 @@ header {
   background-color: #cccccc;
 }
 
+// UI AUTOCOMPLETE
+
+.ui-autocomplete {
+  z-index: 9998;
+}
+
 // Gmaps Custom Styling
 
 .custom_overlay {
@@ -58,7 +65,7 @@ header {
   height: 200px;
   top: 200px;
   margin-top: -200px;
-  z-index: 9999;
+  z-index: 9997;
 }
 
 #gmaps-canvas {

@@ -1,7 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 andrew:
-  name: Andrew Miller
   email: andrew@example.com
   password_digest: <%= User.digest('password') %> 
   admin: true
@@ -9,7 +8,6 @@ andrew:
   activated_at: <%= Time.zone.now %>
 
 thomas:
-  name: Thomas Wild
   email: thomas@example.com
   password_digest: <%= User.digest('password') %>
   activated: true
@@ -17,7 +15,6 @@ thomas:
 
 <% 98.times do |n| %>
 user_<%= n %>:
-  name: <%= "User #{n}" %>
   email: <%= "user_#{n}@example.com" %>
   password_digest: <%= User.digest('password') %>
   activated: true

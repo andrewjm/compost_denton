@@ -22,7 +22,7 @@
       <%= f.text_field :last_name, class: 'form-control' %>
 
       <%= f.label :address_line_one, "Address" %>
-      <%= f.text_field :address_line_one, id: 'gmaps-input-address', class: 'form-control' %>
+      <%= f.text_field :address_line_one, class: 'form-control', id: 'gmaps-input-address' %>
 
       <%= f.submit "Create my account", class: "btn btn-primary" %>
     <% end %>

@@ -5,7 +5,7 @@ class AddCustomFieldsToUsers < ActiveRecord::Migration
     add_column :users, :address_line_one, :string
     add_column :users, :address_line_two, :string
     add_column :users, :city, :string
-    add_column :users, :zip_code, :number
-    add_column :users, :number_residents, :number
+    add_column :users, :zip_code, :integer
+    add_column :users, :number_residents, :integer
   end
 end

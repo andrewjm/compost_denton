@@ -577,10 +577,4 @@ UPDATE: Geocoder does not require Postgis. Although Postgis looks awesome, it in
 
 Geocoder is working, however address\_line\_one is not saving in db. Need to investigate.. is now saving, attr\_accessor was getting in the way
 
-### Stripe
-
-Probably needs a controller (and a model?)
-
-#### Creating account
-
-#### Editing account
+Working on UI branch. Finish up ui that I can, then move onto creating two more tables (members, weight), as well as fxn to make new members etc.

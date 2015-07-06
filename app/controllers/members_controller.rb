@@ -6,7 +6,9 @@ class MembersController < ApplicationController
   # Display members in pagination
   def index
     @user = User.find(params[:user_id])
-    @members = @user.members.paginate(page: params[:page])
+    #@members = @user.members.order("LOWER(first\_name) assc").paginate(page: params[:page])
+    #@members = @user.members.order("LOWER(last\_name) assc").paginate(page: params[:page])
+    @members = @user.members.near([32.8206645,-96.7313396], 50).paginate(page: params[:page])
   end
 
   # Member profile

@@ -9,7 +9,8 @@
 # run with rake db:seed
 # reset db with bundle exec rake db:migrate:reset
 
-User.create!( name:                  'Admin User',
+User.create!( first_name:            'Admin',
+              last_name:	     'User',
 	      email:                 'admin@dbseeds.com',
 	      password:              'foobar',
 	      password_confirmation: 'foobar',
@@ -18,10 +19,10 @@ User.create!( name:                  'Admin User',
 	      activated_at:	      Time.zone.now )
 
 99.times do |n|
-  name     = Faker::Name.name
+  first_name     = Faker::Name.name
   email    = "user_#{n+1}@dbseeds.com"
   password = 'password'
-  User.create!( name:                  name,
+  User.create!( first_name:            first_name,
 		email:                 email,
 		password:              password,
 		password_confirmation: password,

@@ -1,0 +1,9 @@
+<li class="list-group-item">
+  <%= member.first_name %> <%= member.last_name %>
+  <br />
+  <%= member.address_line_one %>
+  <% if member.address_line_two.present? %>
+    <%= member.address_line_two %>
+  <% end %>
+  <%= link_to 'Profile', user_member_path(id: member.id, user_id: @user.id) %>
+</li>

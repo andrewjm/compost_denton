@@ -578,3 +578,39 @@ UPDATE: Geocoder does not require Postgis. Although Postgis looks awesome, it in
 Geocoder is working, however address\_line\_one is not saving in db. Need to investigate.. is now saving, attr\_accessor was getting in the way
 
 Working on UI branch. Finish up ui that I can, then move onto creating two more tables (members, weight), as well as fxn to make new members etc.
+
+#### Add Members
+
+I'm going to follow Chapter 11 'User Microposts' for these steps, as well at Section 6 in http://guides.rubyonrails.org/getting\_started.html
+
+Members db table:
+
+Name               | Type    | Key     | Unique | Default
+---------------------------------------------------------
+first\_name        | string  |         |        |
+last\_name         | string  |         |        |
+address\_line\_one | string  |         |        |
+address\_line\_two | string  |         |        |
+latitude           | float   |         |        |
+longitude          | float   |         |        |
+active             | boolean |         |        |
+user\_id           | integer | foreign |        |
+
+    rails g model Member first\_name:string last\_name:string address\_line\_one:string address\_line\_two:string latitude:float longitude:float active:boolean user:references
+    rails g controller Members
+
+Okay I got it saving members, next steps:
+* save their lat long on save (DONE!)
+* the gmaps-auto-complete stuff is not being loaded consistently, may need to look into other options (breaking address\_line\_one into state, city, address) (This was an issue with turbolinks not allowing the js to load properly, this is fixed with the jquery.turbrolinks gem)
+* display them in a list (ordered by first name, last name, proximity)
+
+*Some queries for displaying members:*
+* Member.where(:user\_id => 1)
+* Member.near([33.1970366,-96.7052353], 50)
+* Member.order(first\_name: :asc).where(:user\_id => 2)
+* Member.order("LOWER(first\_name) asc").where(:user\_id => 1)
+* apparently these won't be necessary, defining User then taking a @user.members is sufficient to grab the correct members
+
+I am now displaying members on each user profile page with a link to the member profile page. check members controller, views, partials to clean up with crap code that didnt end up working.
+
+Then on to logging weight, etc.

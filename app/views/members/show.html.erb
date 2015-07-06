@@ -1,0 +1,16 @@
+<% provide( :title, @member.first_name ) %>
+<div class="row">
+  <aside class="col-md-4">
+    <h1><%= @member.first_name %> <%= @member.last_name %></h1>
+    <h2><%= @member.address_line_one %></h2>
+    <% if @member.address_line_two.present? %>
+      <h2><%= @member.address_line_two %></h2>
+    <% end %>
+  </aside>
+  <div class="col-md-8">
+    <ol class="users list-group">
+      <% # For each @member render the _member.html.erb partial %>
+      <!-- could list weight logs here -->
+    </ol>
+  </div>
+</div>

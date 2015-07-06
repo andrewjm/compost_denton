@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+
+  has_many :members
   
   attr_accessor :remember_token, :activation_token, :reset_token
   geocoded_by :address_line_one

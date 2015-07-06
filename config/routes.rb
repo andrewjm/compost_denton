@@ -23,7 +23,9 @@ Rails.application.routes.draw do
 
   # Resources, REST methods needed
 
-  resources	:users
+  resources	:users do
+    resources	  :members
+  end
   resources	:account_activations, 	only: [:edit]
   resources	:password_resets,	only: [:new, :create, :edit, :update]
 

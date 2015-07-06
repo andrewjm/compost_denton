@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150613013858) do
+ActiveRecord::Schema.define(version: 20150622034121) do
+
+  create_table "members", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "address_line_one"
+    t.string   "address_line_two"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.boolean  "active"
+    t.integer  "user_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "members", ["user_id", "created_at"], name: "index_members_on_user_id_and_created_at"
+  add_index "members", ["user_id"], name: "index_members_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email"

@@ -1,0 +1,28 @@
+<% provide(:title, 'Add member') %>
+<h1>Add member</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for([:user, @member]) do |f| %>
+
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name, class: 'form-control' %>
+
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name, class: 'form-control' %>
+
+      <%= f.label :address_line_one, "Address" %>
+      <%= f.text_field :address_line_one, class: 'form-control', id: 'gmaps-input-address' %>
+
+      <%= f.label :address_line_two, "Address line two (optional)" %>
+      <%= f.text_field :address_line_two, class: 'form-control' %>
+
+      <%= f.submit "Create my account", class: "btn btn-primary" %>
+    <% end %>
+
+    <div id='gmaps-error'></div>
+    <div class="custom_overlay" onClick="style.pointerEvents='none'"></div>
+    <div id='gmaps-canvas'></div>
+
+  </div>
+</div>

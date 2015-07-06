@@ -37,6 +37,7 @@ class UsersController < ApplicationController
   # Accessible via example.com/users/:id -- ie. (example.com/users/1)
   def show
     @user = User.find(params[:id])
+    @members = @user.members.paginate(page: params[:page])
   end
 
   # Display users in pagination
@@ -84,13 +85,13 @@ class UsersController < ApplicationController
     end
 
     # Check if logged in
-    def logged_in_user
-      unless logged_in?
-        store_location			# app/helpers/session_helper.rb
-        flash[:danger] = "Please log in"
-        redirect_to login_url
-      end
-    end
+#    def logged_in_user
+#      unless logged_in?
+#        store_location			# app/helpers/session_helper.rb
+#        flash[:danger] = "Please log in"
+#        redirect_to login_url
+#      end
+#    end
 
     # Confirms the correct user
     def correct_user

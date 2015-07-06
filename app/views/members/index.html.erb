@@ -1,0 +1,9 @@
+<% provide(:title, "All Members") %>
+<h1>All Members</h1>
+
+<ul class="users list-group">
+  <% # For each @member render the _member.html.erb partial %>
+  <% @members.each do |member| %>
+    <%= render member %>
+  <% end %>
+</ul>

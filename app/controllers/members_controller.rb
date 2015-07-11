@@ -6,9 +6,25 @@ class MembersController < ApplicationController
   # Display members in pagination
   def index
     @user = User.find(params[:user_id])
-    #@members = @user.members.order("LOWER(first\_name) assc").paginate(page: params[:page])
-    #@members = @user.members.order("LOWER(last\_name) assc").paginate(page: params[:page])
-    @members = @user.members.near([32.8206645,-96.7313396], 50).paginate(page: params[:page])
+    @lat = cookies[:latitudine].nil? ? '0.00' : cookies[:latitudine]
+    @long = cookies[:longitudine].nil? ? '0.00' : cookies[:longitudine]
+
+    # Check for 'order' param in url
+    if params.has_key?(:order)
+      if params[:order] == 'first'
+        # Order by first name
+        @members = @user.members.order("LOWER(first\_name) asc").paginate(page: params[:page])
+      elsif params[:order] == 'last'
+        # Order by last name
+        @members = @user.members.order("LOWER(last\_name) asc").paginate(page: params[:page])
+      elsif params[:order] == 'locale'
+        # Order by location
+        @members = @user.members.near([@lat, @long], 50).paginate(page: params[:page])
+      end
+    else
+      # If no 'order' param, default to order by location
+      @members = @user.members.near([@lat, @long], 50).paginate(page: params[:page])
+    end
   end
 
   # Member profile

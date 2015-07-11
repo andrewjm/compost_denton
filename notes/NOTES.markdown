@@ -613,4 +613,6 @@ Okay I got it saving members, next steps:
 
 I am now displaying members on each user profile page with a link to the member profile page. check members controller, views, partials to clean up with crap code that didnt end up working.
 
+To sort members I have a few queries setup in the show action of the members controller. I need to grab client location using html5 geolocation enableHighAccuracy
+
 Then on to logging weight, etc.

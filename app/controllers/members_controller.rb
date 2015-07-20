@@ -30,6 +30,7 @@ class MembersController < ApplicationController
   # Member profile
   def show
     @member = Member.find(params[:id])
+    @weight = Weight.new
   end
 
   # Make new member

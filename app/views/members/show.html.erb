@@ -12,5 +12,46 @@
       <% # For each @member render the _member.html.erb partial %>
       <!-- could list weight logs here -->
     </ol>
+
+    <%= form_for([:user, @weight]) do |f| %>
+
+      <%= f.hidden_field :member_id, :value => @member.id %>
+
+      <%= f.label :weight %>
+      <%= f.number_field :weight, class: 'form-control', id: 'weight_log_input' %>
+
+      <%= f.submit "Log weight", class: "btn btn-primary" %>
+    <% end %>
+
+    <div class="btn-group btn-group-justified" id="weight_buttons" role="group" aria-label="...">
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-success" id="+50">+50</button>
+      </div>
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-success" id="+10">+10</button>
+      </div>
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-success" id="+5">+5</button>
+      </div>
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-success" id="+1">+1</button>
+      </div>
+    </div>
+
+    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-danger" id="-50">-50</button>
+      </div>
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-danger" id="-10">-10</button>
+      </div>
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-danger" id="-5">-5</button>
+      </div>
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-danger" id="-1">-1</button>
+      </div>
+    </div>
+
   </div>
 </div>

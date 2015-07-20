@@ -10,12 +10,13 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require geo
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require jquery-ui
 //= require bootstrap
 //= require gmaps-auto-complete
+//= require weight_log
+//= require geo
 //= require turbolinks
 //= require_tree .

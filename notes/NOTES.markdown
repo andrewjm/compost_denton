@@ -616,3 +616,44 @@ I am now displaying members on each user profile page with a link to the member 
 To sort members I have a few queries setup in the show action of the members controller. I need to grab client location using html5 geolocation enableHighAccuracy
 
 Then on to logging weight, etc.
+
+### Logging Weight
+
+* Probably no controller needed (?)
+* Add a model for weight
+  * weight-log has one member and one user
+  * user has many weight-logs
+  * member has many weight-logs
+* member profile interface:
+  * integer input field that can be typed into or controlled via js and buttons
+  * buttons for +1 +5 +10 +50, -1 -5 -10 -50, submit
+  * display name, address, total weight, (stats/graphs in the future), input field, buttons
+
+#### Weight Log Table
+
+Name       | Type | Key     |
+-----------------------------
+id         | int  | primary |
+date       | date |         |
+weight     | int  |         |
+user\_id   | int  | foreign |
+member\_id | int  | foreign |
+
+  rails g model Weight date:datetime weight:integer user:references member:references
+
+Okay... I finally got the weight logger to save logs. It seems clear to me at this point that twice nested resourced in config/routes.rb are yielding only problems with no benefit. It added complexity to my form\_for call in the view, and did not yield any convenience in the weights\_controller (I still had to pass a hidden\_field to get the member\_id to be inserted).
+
+It would be worth taking another look at my resources in config/routes.rb to refactor such that weights are nested in either users or members but not both (probably users as I have already arranged the controller this way).
+
+Here is the form\_for I was using with twice nested resources: <%= form_for @weight, url: user_member_weights_path(user_id: current_user.id, member_id: @member.id) do |f| %>
+
+*Suggestions from Sean to refactor and keep twice nested resources:*
+* before\_validation in the model to populate user.id
+or
+* use a hasmany\_through to simplify the relation between user/member/weight
+
+I got the calculator working on the weight logger, the only thing it doesnt do right now is allow for manual input and button input.
+
+Weight log and geo js load on all pages but I setup some if statements so they fire only if particular elements exist
+
+Next up: take a look at the calculator bit above, also write queries to print total weights for members and users, also members don't load first time when hitting members page

@@ -30,6 +30,7 @@ class MembersController < ApplicationController
   # Member profile
   def show
     @member = Member.find(params[:id])
+    @member_weight = Weight.where(member_id: @member.id).sum(:weight)
     @weight = Weight.new
   end
 

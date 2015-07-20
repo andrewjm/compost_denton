@@ -633,8 +633,6 @@ Then on to logging weight, etc.
 
 Name       | Type | Key     |
 -----------------------------
-id         | int  | primary |
-date       | date |         |
 weight     | int  |         |
 user\_id   | int  | foreign |
 member\_id | int  | foreign |
@@ -656,4 +654,9 @@ I got the calculator working on the weight logger, the only thing it doesnt do r
 
 Weight log and geo js load on all pages but I setup some if statements so they fire only if particular elements exist
 
-Next up: take a look at the calculator bit above, also write queries to print total weights for members and users, also members don't load first time when hitting members page
+### Getting and Displaying Weight
+
+Some Queries:
+* Weight.where(member\_id: 3).sum(:weight)
+
+Weight is now being displayed. I think MVP functionality is complete! Let's move on to UI/UX

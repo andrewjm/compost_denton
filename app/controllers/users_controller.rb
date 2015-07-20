@@ -37,6 +37,7 @@ class UsersController < ApplicationController
   # Accessible via example.com/users/:id -- ie. (example.com/users/1)
   def show
     @user = User.find(params[:id])
+    @user_weight = Weight.where(user_id: @user.id).sum(:weight)
     @members = @user.members.paginate(page: params[:page])
   end
 

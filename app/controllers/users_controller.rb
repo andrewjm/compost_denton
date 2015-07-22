@@ -82,7 +82,10 @@ class UsersController < ApplicationController
       params.require(:user).permit( :email,
 				    :password,
 				    :password_confirmation,
-				    :address_line_one )
+				    :first_name,
+				    :last_name,
+				    :address_line_one,
+				    :address_line_two )
     end
 
     # Check if logged in

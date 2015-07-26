@@ -5,7 +5,7 @@ gem 'bcrypt',                   '3.1.7'		# encryption
 gem 'faker',                    '1.4.1'         # to create dummy users in dev
 gem 'will_paginate',            '3.0.7'         # pagination methods
 gem 'bootstrap-will_paginate',  '0.0.10'        # bootstrap pagination styling
-gem 'bootstrap-sass',           '3.2.0.0'
+gem 'bootstrap-sass',           '~> 3.3.5' 
 gem 'sass-rails',               '5.0.1'
 gem 'uglifier',                 '2.5.3'
 gem 'coffee-rails',             '4.1.0'

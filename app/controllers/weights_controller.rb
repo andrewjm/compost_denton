@@ -11,12 +11,13 @@ class WeightsController < ApplicationController
   def create
     @weight = Weight.new
     @weight = current_user.weights.build(weight_params)
+    @member = Member.find_by(id: weight_params[:member_id])
     if @weight.save
-      flash[:success] = "Weight logged!"
-      redirect_to root_url
+      flash[:success] = "#{@weight.weight} lbs logged for #{@member.first_name} #{@member.last_name}!"
+      redirect_to user_members_path
     else
-      flash[:danger] = "Date was not posted!"
-      redirect_to root_url
+      flash[:danger] = "Error occured, weight not logged!"
+      redirect_to user_members_path
     end
   end
 

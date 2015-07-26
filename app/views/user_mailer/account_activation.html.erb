@@ -1,8 +1,8 @@
-<h1>App Name</h1>
+<h1>Compost App</h1>
 
-<p>Hi!</p>
+<p>Hi <%= @user.first_name %> <%= @user.last_name %>!</p>
 
-<p>Click the link below to activate your account:</p>
+<p>Welcome to the Compost App! Click the link below to activate your account:</p>
 
 <% # edit_account_activation_url is a url helper that builds a url with given arguments %>
 <%= link_to "Activate Account", edit_account_activation_url(@user.activation_token, email: @user.email) %>

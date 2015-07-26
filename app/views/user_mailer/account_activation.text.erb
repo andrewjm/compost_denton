@@ -1,8 +1,8 @@
-App Name
+Compost App
 
-Hi!
+Hi <%= @user.first_name %> <%= @user.last_name %>!
 
-Click the link below to activate your account:
+Welcome to the Compost App! Click the link below to activate your account:
 
 <% # edit_account_activation_url is a url helper that builds a url with given arguments %>
 <%= edit_account_activation_url(@user.activation_token, email: @user.email) %>

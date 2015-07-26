@@ -17,12 +17,14 @@
       <%= f.label :address_line_two, "Address line two (optional)" %>
       <%= f.text_field :address_line_two, class: 'form-control' %>
 
-      <%= f.submit "Create my account", class: "btn btn-primary" %>
+      <%= f.submit "Create member", class: "btn btn-primary" %>
     <% end %>
 
     <div id='gmaps-error'></div>
-    <div class="custom_overlay" onClick="style.pointerEvents='none'"></div>
-    <div id='gmaps-canvas'></div>
+    <div class="well gmaps-canvas-container">
+      <div class="custom_overlay" onClick="style.pointerEvents='none'"></div>
+      <div id='gmaps-canvas'></div>
+    </div>
 
   </div>
 </div>

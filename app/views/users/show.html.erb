@@ -1,11 +1,19 @@
 <% provide( :title, 'Profile' ) %>
 <div class="row">
   <div class="col-md-12">
-    <h1><%= @user.first_name %><!-- going to change this to org_name --></h1>
-    <h2>Total Diversion<span class="pull-right"><%= @user_weight %> lbs</span></h2>
-    <h2>Monthly Average<span class="pull-right">xx lbs</span></h2>
-    <h2>Weekly Average<span class="pull-right">xx lbs</span></h2>
-    <%= link_to "Log weight", user_members_path(@user), class: "btn btn-primary btn-lg" %>
-    <%= link_to "Add member", new_user_member_path(@user), class: "btn btn-default btn-lg"  %>
+  <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+  <ul class="list-group">
+    <li class="list-group-item">
+      <h3>Total Diversion<span class="pull-right"><strong><%= number_with_delimiter(@user_weight, :delimiter => ',') %></strong> lbs</span></h3>
+    </li>
+    <li class="list-group-item">
+      <h3>Monthly Average<span class="pull-right">coming soon!</span></h3>
+    </li>
+    <li class="list-group-item">
+      <h3>Weekly Average<span class="pull-right">coming soon!</span></h3>
+    </li>
+  </ul>
+  <%= link_to "Log weight", user_members_path(@user), class: "btn btn-primary btn-lg" %>
+  <%= link_to "Add member", new_user_member_path(@user), class: "btn btn-default btn-lg"  %>
   </div>
 </div>

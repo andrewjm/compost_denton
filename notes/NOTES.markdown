@@ -660,3 +660,33 @@ Some Queries:
 * Weight.where(member\_id: 3).sum(:weight)
 
 Weight is now being displayed. I think MVP functionality is complete! Let's move on to UI/UX
+
+## Style
+
+### UI
+
+* typography
+* RWD
+* forms
+* inputs
+* buttons
+* color palette
+* icons
+* breadcrumbs (?)
+* homepage howto - through ui screenshots (mobile and desktop)
+
+Researched bootstrap/customization/rails best practices. Varying advice, going to follow the bootstrap-sass github suggestions at bottom of page: https://github.com/twbs/bootstrap-sass which is what I am already doing: override bootstrap variables before importing bootstrap.
+
+### Flow
+
+* redirects
+* email templates - done
+* flash messages
+* visual feedback
+
+### TODOS
+
+* add 'add member' and 'log weight' buttons to Account dropdown menu (currently this breaks the app?)
+* ensure only logged in and correct users can visit non-static pages - this is mostly done, probably could still use work, but for now OK
+* build a community page that offers high level stats for all organizations
+* change database terminology from Users to Organizations (probably going to be a big task..)

@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get 'contact'		=>	'static_pages#Contact'
   get 'terms'		=>	'static_pages#Terms'
   get 'signup'		=>	'users#new'
+  get 'style'		=>	'static_pages#Style'
+  get 'style2'		=>	'static_pages#Style2'
 
   # Sessions Routing
 

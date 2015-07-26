@@ -2,11 +2,11 @@
 <div class="row">
   <aside class="col-md-4">
     <h1><%= @member.first_name %> <%= @member.last_name %></h1>
-    <h2><%= @member.address_line_one %></h2>
+    <h4><%= @member.address_line_one %></h4>
     <% if @member.address_line_two.present? %>
-      <h2><%= @member.address_line_two %></h2>
+      <h4><%= @member.address_line_two %></h4>
     <% end %>
-    <h2>Total Weight: <%= @member_weight %></h2>
+    <h4><strong><%= @member_weight %></strong> lbs collected</h4>
   </aside>
   <div class="col-md-8">
     <ol class="users list-group">
@@ -19,37 +19,42 @@
       <%= f.hidden_field :member_id, :value => @member.id %>
 
       <%= f.label :weight %>
-      <%= f.number_field :weight, class: 'form-control', id: 'weight_log_input' %>
+      <div class="input-group input-group-lg">
+        <%= f.number_field :weight, class: 'form-control', id: 'weight_log_input' %>
+        <span class="input-group-addon" id="basic-addon">lbs</span>
+        <span class="input-group-btn">
+          <%= f.submit "Log weight", class: "btn btn-primary" %>
+        </span>
+      </div>
 
-      <%= f.submit "Log weight", class: "btn btn-primary" %>
     <% end %>
 
-    <div class="btn-group btn-group-justified" id="weight_buttons" role="group" aria-label="...">
-      <div class="btn-group" role="group">
+    <div class="weight-log-buttons btn-group btn-group-justified" id="weight_buttons" role="group" aria-label="...">
+      <div class="btn-group btn-group-lg" role="group">
         <button type="button" class="btn btn-success" id="+50">+50</button>
       </div>
-      <div class="btn-group" role="group">
+      <div class="btn-group btn-group-lg" role="group">
         <button type="button" class="btn btn-success" id="+10">+10</button>
       </div>
-      <div class="btn-group" role="group">
+      <div class="btn-group btn-group-lg" role="group">
         <button type="button" class="btn btn-success" id="+5">+5</button>
       </div>
-      <div class="btn-group" role="group">
+      <div class="btn-group btn-group-lg" role="group">
         <button type="button" class="btn btn-success" id="+1">+1</button>
       </div>
     </div>
 
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <div class="btn-group" role="group">
+    <div class="weight-log-buttons btn-group btn-group-justified" role="group" aria-label="...">
+      <div class="btn-group btn-group-lg" role="group">
         <button type="button" class="btn btn-danger" id="-50">-50</button>
       </div>
-      <div class="btn-group" role="group">
+      <div class="btn-group btn-group-lg" role="group">
         <button type="button" class="btn btn-danger" id="-10">-10</button>
       </div>
-      <div class="btn-group" role="group">
+      <div class="btn-group btn-group-lg" role="group">
         <button type="button" class="btn btn-danger" id="-5">-5</button>
       </div>
-      <div class="btn-group" role="group">
+      <div class="btn-group btn-group-lg" role="group">
         <button type="button" class="btn btn-danger" id="-1">-1</button>
       </div>
     </div>

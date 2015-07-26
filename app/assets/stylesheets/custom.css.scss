@@ -3,6 +3,10 @@
 **/ 
 
 $brand-primary: #4F6F2D;
+$headings-font-weight: 200;
+$btn-font-weight: 200;
+$btn-danger-bg: rgba(110,45,111,0.75);
+$btn-success-bg: rgba(45,46,111,0.75);
 
 /**
 *** CUSTOM VARIABLES
@@ -20,6 +24,56 @@ $brand-primary: #4F6F2D;
 /**
 *** CUSTOM STYLES
 **/
+
+// INPUTS
+
+input[type='number'] {
+  text-align: right;
+}
+
+// The following number input styles are lifted from:
+// http://www.rudolphk.co.za/css-tip-remove-spinner-input-number/
+/* For Firefox */
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+/* Webkit browsers like Safari and Chrome */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+// GENERAL CUSTOM
+
+.member-list-item h4 {
+  margin-top: 0px;
+}
+.member-list-item a {
+  margin-top: -15px;
+}
+.member-list-item-tall h4 {
+  margin-top: 0px;
+}
+.member-list-item-tall a {
+  margin-top: -25px;
+}
+#member_order_buttons {
+  margin-bottom: 1em;
+}
+.list-group-item h3 {
+  margin: 10px 0px;
+}
+input {
+  margin-bottom: .5em;
+}
+.gmaps-canvas-container {
+  margin-top: .5em;
+}
+.weight-log-buttons {
+  margin-top: .5em;
+}
 
 body {
   padding-top: 100px;

@@ -1,9 +1,19 @@
-<li class="list-group-item">
-  <%= member.first_name %> <%= member.last_name %>
-  <br />
-  <%= member.address_line_one %>
-  <% if member.address_line_two.present? %>
-    <%= member.address_line_two %>
-  <% end %>
-  <%= link_to 'Profile', user_member_path(id: member.id, user_id: @user.id) %>
-</li>
+<% if member.address_line_two.present? %>
+  <li class="member-list-item-tall list-group-item">
+    <h4 ><strong><%= member.first_name %> <%= member.last_name %></strong></h4>
+    <%= truncate(member.address_line_one, :length => 35) %>
+    <br>
+    <%= truncate(member.address_line_two, :length => 35) %>
+    <%= link_to user_member_path(id: member.id, user_id: @user.id), class: 'member-profile-link pull-right' do %>
+      Profile <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <% end %>
+  </li>
+<% else %>
+  <li class="member-list-item list-group-item">
+    <h4 ><strong><%= member.first_name %> <%= member.last_name %></strong></h4>
+    <%= truncate(member.address_line_one, :length => 35) %>
+    <%= link_to user_member_path(id: member.id, user_id: @user.id), class: 'member-profile-link pull-right' do %>
+      Profile <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <% end %>
+  </li>
+<% end %>

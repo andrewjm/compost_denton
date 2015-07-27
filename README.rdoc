@@ -1,28 +1,25 @@
-== README
+== Compost App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Purpose
 
-Things you may want to cover:
+This app is designed to help community composting organizations with data collection.
 
-* Ruby version
+1. Add members
+2. Log each pickup weight
+3. Track your waste diversion!
 
-* System dependencies
+## Dependencies
 
-* Configuration
+This app is built on the following technologies:
 
-* Database creation
+* Ruby 2.0
+* Rails 4.2.0
+* PostgreSQL 9.4.2
 
-* Database initialization
+## Hosted options
 
-* How to run the test suite
+A hosted production instance is available at (compostapp.com)[http://compostapp.com]. It is hosted on Heroku and managed by yours truly. All are welcome and encouraged to utilize the hosted option for both ease and nation-wide organizational purposes. I ask that those with accounts at compostapp.com contribute a small monthly donation to help keep the lights on. Of course, in the spirit of open source, no one is required to use the hosted option!
 
-* Services (job queues, cache servers, search engines, etc.)
+## Contact
 
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+To report bugs or request new features, please GitHub Issues: (https://github.com/findandrew/Compost-App/issues)[https://github.com/findandrew/Compost-App/issues]

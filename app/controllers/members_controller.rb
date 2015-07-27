@@ -8,6 +8,13 @@ class MembersController < ApplicationController
     @user = User.find(params[:user_id])
     @lat = cookies[:latitudine].nil? ? '0.00' : cookies[:latitudine]
     @long = cookies[:longitudine].nil? ? '0.00' : cookies[:longitudine]
+    @members = @user.members.paginate(page: params[:page])
+
+    # If no members, set flash and exit
+    if @members.empty?
+      flash[:info] = "Create your first member by clicking the 'Add Member' button!"
+      return
+    end
 
     # Check for 'order' param in url
     if params.has_key?(:order)
@@ -20,10 +27,16 @@ class MembersController < ApplicationController
       elsif params[:order] == 'locale'
         # Order by location
         @members = @user.members.near([@lat, @long], 50).paginate(page: params[:page])
+        if @members.empty?
+          flash[:info] = "No members within 50 miles of your current location. Try ordering by first or last name!"
+        end
       end
     else
       # If no 'order' param, default to order by location
       @members = @user.members.near([@lat, @long], 50).paginate(page: params[:page])
+      if @members.empty?
+        flash[:info] = "No members within 50 miles of your current location. Try ordering by first or last name!"
+      end
     end
   end
 

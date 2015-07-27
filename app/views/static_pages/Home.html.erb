@@ -1,12 +1,17 @@
 <section>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
       <h1>Data collection for community composting organizations.</h1> 
       <%= link_to "Log in", login_path, class: "btn btn-primary btn-lg" %>
       <%= link_to "Create account", signup_path, class: "btn btn-default btn-lg" %>
+      <div class="well well-sm howto">
+        <h4>1. Add members.</h4>
+        <h4>2. Log each pickup weight.</h4>
+        <h4>3. Track your waste diversion!</h4>
+      </div>
     </div>
-    <div class="col-md-6">
-      <!-- mobile screenshots of some UI here -->
+    <div class="col-md-8">
+      <%= image_tag('ui.png', class: 'ui') %>
     </div>
   </div>
 </section>

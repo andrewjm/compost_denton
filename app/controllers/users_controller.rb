@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)       # fill @user attributes with hash from form
     if @user.save                       # attempt to save @user into db
       @user.send_activation_email
-      flash[:info] = "Please check your email to activate your account"
+      flash[:info] = "Please check your email to activate your account (email will arrive in a few minutes!)"
       redirect_to root_url
       # log_in @user
       # flash[:success] = "Welcome to Compost App"

@@ -690,3 +690,16 @@ Researched bootstrap/customization/rails best practices. Varying advice, going t
 * ensure only logged in and correct users can visit non-static pages - this is mostly done, probably could still use work, but for now OK
 * build a community page that offers high level stats for all organizations
 * change database terminology from Users to Organizations (probably going to be a big task..)
+
+### User Test with Michael
+
+* add member btn to log weight page - done
+* add copy to log weight page, if no members display for 'locale' order: "no members within X miles of your current location" - done
+* make login page inaccessible if logged in - done
+* make homepage profile page if logged in - done (a better way to do this might be to have an (if logged\_in?) statement in the root view to render profile)
+* faster sorting on log weight page with isotope js
+* account activation flash msg: 'may take up to X minues for email to arrive' - done
+* homepage UI howtos with screenshots: - done
+  1. Add members
+  2. Log each pickup weight
+  3. Track your waste diversion

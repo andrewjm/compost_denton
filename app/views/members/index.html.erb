@@ -19,3 +19,7 @@
     <%= render member %>
   <% end %>
 </ul>
+
+<%= will_paginate %>
+
+<%= link_to "Add member", new_user_member_path(@user), class: "btn btn-primary btn-lg"  %>

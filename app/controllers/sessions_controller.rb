@@ -1,5 +1,9 @@
 class SessionsController < ApplicationController
+
   def new
+    if logged_in?
+      redirect_to current_user
+    end
   end
 
   # Accepts params hash from login form, creates a new session on success

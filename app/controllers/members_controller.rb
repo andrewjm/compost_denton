@@ -12,12 +12,12 @@ class MembersController < ApplicationController
 
     # If no members, set flash and exit
     if @members.empty?
-      flash[:info] = "Create your first member by clicking the 'Add Member' button!"
+      flash.now[:info] = "Create your first member by clicking the 'Add Member' button!"
       return
     end
 
     # Check for 'order' param in url
-    if params.has_key?(:order)
+    if params[:order]
       if params[:order] == 'first'
         # Order by first name
         @members = @user.members.order("LOWER(first\_name) asc").paginate(page: params[:page])
@@ -28,14 +28,14 @@ class MembersController < ApplicationController
         # Order by location
         @members = @user.members.near([@lat, @long], 50).paginate(page: params[:page])
         if @members.empty?
-          flash[:info] = "No members within 50 miles of your current location. Try ordering by first or last name!"
+          flash.now[:info] = "No members within 50 miles of your current location. Try ordering by first or last name!"
         end
       end
     else
       # If no 'order' param, default to order by location
       @members = @user.members.near([@lat, @long], 50).paginate(page: params[:page])
       if @members.empty?
-        flash[:info] = "No members within 50 miles of your current location. Try ordering by first or last name!"
+        flash.now[:info] = "No members within 50 miles of your current location. Try ordering by first or last name!"
       end
     end
   end
@@ -43,17 +43,13 @@ class MembersController < ApplicationController
   # Member profile
   def show
     @member = Member.find(params[:id])
-    @member_weight = Weight.where(member_id: @member.id).sum(:weight)
-    @weight = Weight.new
   end
 
   # Make new member
   def new
-    @member = Member.new
   end
 
   def create
-    @member = Member.new
     @member = current_user.members.build(member_params)
     if @member.save
       flash[:success] = "Member '#{@member.first_name} #{@member.last_name}' created!"

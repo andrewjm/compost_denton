@@ -702,6 +702,14 @@ Researched bootstrap/customization/rails best practices. Varying advice, going t
 * homepage UI howtos with screenshots: - done
   1. Add members
   2. Log each pickup weight
+  3. Track your waste diversion
 
 I setup domain stuff for compostapp.com and supposedly pointed it to heroku. We'll see..
-  3. Track your waste diversion
+
+### notes with steve
+
+secondary unit address
+session maybe better alternative to cookies when grabbing lat long on members index
+
+return .paginate 'arel chaining'
+changes @member\_weights, double check

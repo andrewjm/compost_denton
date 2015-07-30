@@ -60,7 +60,11 @@ function setBtnColor(name) {
 };
 
 $(document).ready(function () {
-  if ( document.getElementById( 'member_order_buttons' )) { //check for elem unique to this view
+  if ( document.getElementById( 'profile_stats'  )) { // check for elem unique to profile view
+    navigator.geolocation.getCurrentPosition(success, error, options); // HTML5 Geolocation
+  };
+
+  if ( document.getElementById( 'member_order_buttons' )) { //check for elem unique to member-sort view
 
     navigator.geolocation.getCurrentPosition(success, error, options); // HTML5 Geolocation
 

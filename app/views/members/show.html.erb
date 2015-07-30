@@ -6,7 +6,7 @@
     <% if @member.address_line_two.present? %>
       <h4><%= @member.address_line_two %></h4>
     <% end %>
-    <h4><strong><%= @member_weight %></strong> lbs collected</h4>
+    <h4><strong><%= @member.weights.sum(:weight) %></strong> lbs collected</h4>
   </aside>
   <div class="col-md-8">
     <ol class="users list-group">
@@ -14,7 +14,7 @@
       <!-- could list weight logs here -->
     </ol>
 
-    <%= form_for([:user, @weight]) do |f| %>
+    <%= form_for([:user, Weight.new]) do |f| %>
 
       <%= f.hidden_field :member_id, :value => @member.id %>
 

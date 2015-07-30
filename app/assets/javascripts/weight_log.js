@@ -7,6 +7,9 @@ function weight_floor( elem ) {
 
 // ADD VALUE TO INPUT
 function weight_add( val, elem ) {
+  if ( elem.value == ""  ) {
+    elem.value = parseInt( 0, 10 );
+  }
   var tmp = parseInt( elem.value, 10 );
   tmp += parseInt( val, 10 );
   elem.value = tmp;

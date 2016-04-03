@@ -17,8 +17,9 @@ This app is built on the following technologies:
 * PostgreSQL 9.4.2
 
 ## Hosted options
+## Staging Instance
 
-A hosted production instance is available at [compostapp.com](http://compostapp.com). It is hosted on Heroku and managed by yours truly. All are welcome and encouraged to utilize the hosted option for both ease and nation-wide organizational purposes. I ask that those with accounts at compostapp.com contribute a small monthly donation to help keep the lights on. Of course, in the spirit of open source, no one is required to use the hosted option!
+Checkout the example hosted on heroku [here](https://polar-brook-8216.herokuapp.com)
 
 ## Contact
 
